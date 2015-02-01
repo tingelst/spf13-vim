@@ -1,0 +1,71 @@
+" GUI Settings {
+
+    " GVIM- (here instead of .gvimrc)
+    if has('gui_running')
+        set guioptions-=T           " Remove the toolbar
+        set lines=40                " 40 lines of text instead of 24
+        if !exists("g:spf13_no_big_font")
+            if LINUX() && has("gui_running")
+                set guifont=Monospace\ Regular\ 11
+            elseif OSX() && has("gui_running")
+                "set guifont=Monaco\ Regular:h14
+                set guifont=Monaco:h12
+            elseif WINDOWS() && has("gui_running")
+                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+            endif
+        endif
+    else
+        if &term == 'xterm' || &term == 'screen' || &term == 'screen-256color'
+            colorscheme ir_black
+            set bg=dark
+            set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+        endif
+        "set term=builtin_ansi       " Make arrow and other keys work
+    endif
+
+" }
+
+" ROS Settings {
+    " Add xml syntax highlighting to .xacro files
+    autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
+    autocmd BufRead,BufNewFile *.urdf setfiletype xml
+    autocmd BufRead,BufNewFile *.xacro setfiletype xml
+    autocmd BufRead,BufNewFile *.cpf setfiletype xml
+    autocmd BufRead,BufNewFile *.test setfiletype xml
+    autocmd BufRead,BufNewFile *.sdf setfiletype xml
+    autocmd BufRead,BufNewFile *.world setfiletype xml
+    autocmd BufRead,BufNewFile *.moin setfiletype moin
+    autocmd BufRead,BufNewFile *.ops setfiletype cpp
+    autocmd BufRead,BufNewFile *.msg setfiletype ruby
+    autocmd BufRead,BufNewFile *.srv setfiletype ruby
+    autocmd BufRead,BufNewFile *.rosinstall setfiletype yaml
+    au! BufRead,BufNewFile *.json setfiletype json
+    autocmd FileType python set expandtab shiftwidth=4 softtabstop=4 tabstop=4
+" }
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+set nospell
+"autocmd FileType c,cpp,python,xml,yaml set nospell
+
+set guioptions-=m 
+set guioptions-=r
+
+imap kj <Esc>
+vmap kj <Esc>
+
+set nolist
+set wrap
+set linebreak
+let g:tex_conceal=""
+
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>

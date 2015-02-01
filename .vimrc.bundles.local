@@ -1,0 +1,7 @@
+"let g:override_spf13_bundles = 1
+Plugin 'taketwo/vim-ros'
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmtlib'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+call glaive#Install()
